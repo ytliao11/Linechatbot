@@ -9,6 +9,7 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage, ImageSendMessage
 )
 import requests
+from waitress import serve
 
 app = Flask(__name__)
 
