@@ -38,7 +38,7 @@ def handle_message(event):
 
     # 根據用戶訊息決定要查詢的車位類型，並獲取對應的 Grafana 圖片 URL
     if user_message == "一般車位":
-        image_url = "<iframe src="https://p0928367502.grafana.net/d-solo/adbzayqewl79cd/new-dashboard?orgId=1&from=1712575621960&to=1712597221960&panelId=1" width="450" height="200" frameborder="0"></iframe>"
+        image_url = "https://p0928367502.grafana.net/d-solo/adbzayqewl79cd/new-dashboard?orgId=1&from=1712576163428&to=1712597763428&panelId=1" width="450" height="200" frameborder="0""
     elif user_message == "殘障車位":
         image_url = "GRAFANA_IMAGE_URL_FOR_DISABLED"
     else:
