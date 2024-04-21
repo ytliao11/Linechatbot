@@ -18,6 +18,7 @@ handler = WebhookHandler('a42f467a09899053c37f640cd7e748cb')
 
 # 数据库连接配置
 db = mysql.connector.connect(host='localhost',
+                             port03306,
                              user='root',
                              password='qwe26600099',
                              database='parking',
