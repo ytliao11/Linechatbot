@@ -8,7 +8,7 @@ from linebot.exceptions import (
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage
 )
-import pymysql.cursors
+import mysql.connector
 from waitress import serve
 
 # 初始化 Flask 应用和 LINE Bot API
