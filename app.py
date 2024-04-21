@@ -22,7 +22,7 @@ db = mysql.connector.connect(host='localhost',
                              password='qwe26600099',
                              database='parking',
                              charset='utf8mb4',
-                             cursorclass=pymysql.cursors.DictCursor)
+                            )
 
 @app.route("/callback", methods=['POST'])
 def callback():
