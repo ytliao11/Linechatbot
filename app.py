@@ -17,7 +17,7 @@ line_bot_api = LineBotApi('UoTKrw0p7aNjTjcxy4mhKn4fB8ckub8uojTEtUDmD+TiPl5Gzs7e5
 handler = WebhookHandler('a42f467a09899053c37f640cd7e748cb')
 
 # 数据库连接配置
-connection = pymysql.connect(host='localhost',
+connection = pymysql.connect(host='3306',
                              user='root',
                              password='qwe26600099',
                              database='parking',
