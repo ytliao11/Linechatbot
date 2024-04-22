@@ -37,3 +37,4 @@ waitress==3.0.0
 Werkzeug==3.0.1
 wrapt==1.16.0
 yarl==1.9.4
+pandas==2.2.2
