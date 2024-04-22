@@ -10,7 +10,6 @@ from linebot.models import (
 )
 import requests
 from waitress import serve
-import pandas as pd  # Importing pandas to handle CSV files
 
 # 初始化 Flask 应用和 LINE Bot API
 app = Flask(__name__)
@@ -31,11 +30,13 @@ def callback():
 def handle_message(event):
     user_message = event.message.text
     if user_message == "一般車位":
-        # Read the CSV file
-        df = pd.read_csv('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\output4.csvparkiinglot')  # Update the path to your CSV file
-        # Get the last row of data as a string
-        last_row = df.iloc[-1].to_string()
-        reply_message = f"最後一筆資料：\n{last_row}"
+        response = requests.get('https://script.google.com/macros/s/AKfycbzEWZvu8F6H98BDDzKSFf6iT0ykOpMYeeBqZwc95rqrodJCHWyxEtKH5lzm2z9-fhIUGg/exec')  # 替換 YOUR_SCRIPT_ID
+        data = response.json()
+        if data['status'] == 'success':
+            last_record = data['data']
+            reply_message = f"最後一筆資料：\n{last_record}"
+        else:
+            reply_message = "無法獲取數據。"
     elif user_message == "殘障車位":
         reply_message = "目前沒有殘障車位的資料。"
     else:
