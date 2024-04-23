@@ -30,11 +30,12 @@ def callback():
 def handle_message(event):
     user_message = event.message.text
     if user_message == "一般車位":
-        response = requests.get('https://script.google.com/macros/s/AKfycbzEWZvu8F6H98BDDzKSFf6iT0ykOpMYeeBqZwc95rqrodJCHWyxEtKH5lzm2z9-fhIUGg/exec')  # 替換 YOUR_SCRIPT_ID
+        response = requests.get('https://script.google.com/macros/s/AKfycbzEWZvu8F6H98BDDzKSFf6iT0ykOpMYeeBqZwc95rqrodJCHWyxEtKH5lzm2z9-fhIUGg/exec')
         data = response.json()
         if data['status'] == 'success':
             last_record = data['data']
-            reply_message = f"最後一筆資料：\n{last_record}"
+            remaining_slots = last_record[0][2]  # 假设最后一笔数据的格式为 [['一般車位', 69, 11, 58]]
+            reply_message = f"一般車位剩餘:{remaining_slots}個空位"
         else:
             reply_message = "無法獲取數據。"
     elif user_message == "殘障車位":
@@ -45,6 +46,5 @@ def handle_message(event):
         event.reply_token,
         TextSendMessage(text=reply_message)
     )
-
 if __name__ == "__main__":
     serve(app, host='0.0.0.0', port=3000)
