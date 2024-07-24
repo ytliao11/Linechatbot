@@ -48,7 +48,7 @@ def handle_message(event):
         else:
             reply_message = "無法獲取數據。"
     elif user_message == "電動車位":
-        response = requests.get('https://script.google.com/macros/s/AKfycbyg52yXA3ML7n9YpB8u4YrJ9o-4in6aFoFMV7wUjMdZZ3ifDX8EYKjH9ep4P3sxSVa4Sw/exec')
+        response = requests.get('https://script.google.com/macros/s/AKfycbwWgoif03Tfs5Ipd-ZMEvMSjUE2lSgbMcW1-V6ooPcH6B3vkqQVDae_B6HZS7_LRlVwGA/exec')
         data = response.json()
         if data['status'] == 'success':
             last_record = data['data']
