@@ -47,8 +47,17 @@ def handle_message(event):
             reply_message = f"殘障車位剩餘:{remaining_slots}個空位"
         else:
             reply_message = "無法獲取數據。"
+    elif user_message == "電動車位":
+        response = requests.get('https://script.google.com/macros/s/AKfycbyg52yXA3ML7n9YpB8u4YrJ9o-4in6aFoFMV7wUjMdZZ3ifDX8EYKjH9ep4P3sxSVa4Sw/exec')
+        data = response.json()
+        if data['status'] == 'success':
+            last_record = data['data']
+            remaining_slots = last_record[0][2] 
+            reply_message = f"電動車位剩餘:{remaining_slots}個空位"
+        else:
+            reply_message = "無法獲取數據。"
     else:
-        reply_message = "請回答「一般車位」或「殘障車位」。"
+        reply_message = "請回答「一般車位」或「殘障車位」或「電動車位」。"
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=reply_message)
